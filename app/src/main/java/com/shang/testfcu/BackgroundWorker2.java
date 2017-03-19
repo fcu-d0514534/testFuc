@@ -28,6 +28,8 @@ public class BackgroundWorker2 extends AsyncTask<String,Void,String>{
     protected String doInBackground(String... params) {
         try{
             document= Jsoup.connect(URL).get();
+            elements=document.select("select").select("option");
+            Log.d("Jsoup",elements.get(14).text());
 
 
 

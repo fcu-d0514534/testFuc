@@ -26,6 +26,13 @@ public class MainActivity extends AppCompatActivity implements FunctionListener 
             }
         });
 
+        bt2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fetch_PM();
+            }
+        });
+
     }
 
     private void init(){
@@ -37,6 +44,11 @@ public class MainActivity extends AppCompatActivity implements FunctionListener 
     private void fetch_weather(){
         BackgroundWorker backgroundWorker=new BackgroundWorker(this);
         backgroundWorker.execute();
+    }
+
+    private void fetch_PM(){
+        BackgroundWorker2 backgroundWorker2=new BackgroundWorker2(this);
+        backgroundWorker2.execute();
     }
 
 
