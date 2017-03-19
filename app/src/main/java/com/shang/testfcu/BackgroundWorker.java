@@ -29,20 +29,37 @@ public class BackgroundWorker extends AsyncTask<String,Void,String>{
         try{
             document= Jsoup.connect(URL).get();
             elements=document.select("table.FcstBoxTable01").select("tr").select("th");
-            String str=elements.get(0).text()
-                    +"\n"+elements.get(1).text()
+            StringBuffer str=new StringBuffer("");
+            str.append(elements.text());
+
+                    /*+"\n"+elements.get(1).text()
                     +"\n"+elements.get(2).text()
                     +"\n"+elements.get(3).text()
                     +"\n"+elements.get(4).text()
                     +"\n"+elements.get(5).text()
                     +"\n"+elements.get(6).text()
-                    +"\n"+elements.get(7).text();
+                    +"\n"+elements.get(7).text();*/
 
             elements=document.select("table.FcstBoxTable01").select("tr");
-            Log.d("Jsoup",elements.eq(1).text());
-            Log.d("Jsoup",elements.eq(2).text());
+            str.append("\n").append(elements.eq(1).text()).append("\n").append(elements.eq(2).text());
 
-            return str;
+            elements=document.select("table.FcstBoxTable01").select("tr").select("img");
+            str.append("\n").append(elements.get(0).attr("title"))
+                    .append("\n").append(elements.get(1).attr("title"))
+                    .append("\n").append(elements.get(2).attr("title"))
+                    .append("\n").append(elements.get(3).attr("title"))
+                    .append("\n").append(elements.get(4).attr("title"))
+                    .append("\n").append(elements.get(5).attr("title"))
+                    .append("\n").append(elements.get(6).attr("title"))
+                    .append("\n").append(elements.get(7).attr("title"))
+                    .append("\n").append(elements.get(8).attr("title"))
+                    .append("\n").append(elements.get(9).attr("title"))
+                    .append("\n").append(elements.get(10).attr("title"))
+                    .append("\n").append(elements.get(11).attr("title"))
+                    .append("\n").append(elements.get(12).attr("title"))
+                    .append("\n").append(elements.get(13).attr("title"));
+
+            return str.toString();
 
         }catch (IOException e){
             e.printStackTrace();
