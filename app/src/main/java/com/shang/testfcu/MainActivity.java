@@ -33,11 +33,19 @@ public class MainActivity extends AppCompatActivity implements FunctionListener 
             }
         });
 
+        bt3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fetch_data();
+            }
+        });
+
     }
 
     private void init(){
         bt1=(Button)findViewById(R.id.bt1);
         bt2=(Button)findViewById(R.id.bt2);
+        bt3=(Button)findViewById(R.id.bt3);
         tv=(TextView)findViewById(R.id.tv);
     }
 
@@ -49,6 +57,12 @@ public class MainActivity extends AppCompatActivity implements FunctionListener 
     private void fetch_PM(){
         BackgroundWorker2 backgroundWorker2=new BackgroundWorker2(this);
         backgroundWorker2.execute();
+    }
+
+    private void fetch_data(){
+        BackgroundWorker3 backgroundWorker3=new BackgroundWorker3(this);
+        backgroundWorker3.execute();
+
     }
 
 
