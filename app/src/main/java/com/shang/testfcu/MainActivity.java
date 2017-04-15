@@ -40,12 +40,19 @@ public class MainActivity extends AppCompatActivity implements FunctionListener 
             }
         });
 
+        bt4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fetch_AllYoubike();
+            }
+        });
     }
 
     private void init(){
         bt1=(Button)findViewById(R.id.bt1);
         bt2=(Button)findViewById(R.id.bt2);
         bt3=(Button)findViewById(R.id.bt3);
+        bt4=(Button)findViewById(R.id.bt4);
         tv=(TextView)findViewById(R.id.tv);
     }
 
@@ -63,6 +70,11 @@ public class MainActivity extends AppCompatActivity implements FunctionListener 
         BackgroundWorker3 backgroundWorker3=new BackgroundWorker3(this);
         backgroundWorker3.execute();
 
+    }
+
+    private void fetch_AllYoubike(){
+        BackgroundWorker4 backgroundWorker4=new BackgroundWorker4(this);
+        backgroundWorker4.execute();
     }
 
 

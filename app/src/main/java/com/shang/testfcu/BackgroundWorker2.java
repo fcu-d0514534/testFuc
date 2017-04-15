@@ -31,8 +31,6 @@ public class BackgroundWorker2 extends AsyncTask<String,Void,String>{
             elements=document.select("select").select("option");
             Log.d("Jsoup",elements.get(14).text());
 
-
-
         }catch (IOException e){
             e.printStackTrace();
         }
