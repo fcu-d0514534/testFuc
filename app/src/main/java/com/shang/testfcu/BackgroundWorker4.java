@@ -12,6 +12,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,11 +25,12 @@ public class BackgroundWorker4 extends AsyncTask<String,Void,String> {
     private Element e;
     private FunctionListener functionListener;
     private static final String URL="http://i.youbike.com.tw/cht/f11.php";
+    private ArrayList<YouBike> youBikes;
 
     public BackgroundWorker4(FunctionListener listener){
         functionListener=listener;
+        youBikes=new ArrayList<>();
     }
-
 
     @Override
     protected String doInBackground(String... params) {
@@ -79,6 +81,7 @@ public class BackgroundWorker4 extends AsyncTask<String,Void,String> {
         }
 
         functionListener.showTextView(stringBuffer.toString());
+        functionListener.setYoubike(youBikes);
     }
 
     public String getLocal(int count){                        //int轉字串前面補0的處理
@@ -103,10 +106,33 @@ public class BackgroundWorker4 extends AsyncTask<String,Void,String> {
                     .append(jsonObject.getString("mday")+" ")
                     .append(jsonObject.getString("sv")+" ")
                     .append("\n");
+            setYoubike(jsonObject);
+
         } catch (JSONException e) {
             return "";
         }
         return sb.toString();
+    }
+
+    public void setYoubike(JSONObject jsonObject){
+        YouBike youBike=new YouBike();
+        try {
+            youBike.setSno(jsonObject.getInt("sno"));
+            youBike.setSan(jsonObject.getString("sna"));
+            youBike.setSarea(jsonObject.getString("sarea"));
+            youBike.setAr(jsonObject.getString("ar"));
+            youBike.setTot(jsonObject.getInt("tot"));
+            youBike.setSbi(jsonObject.getInt("sbi"));
+            youBike.setBemp(jsonObject.getInt("bemp"));
+            youBike.setLat(jsonObject.getDouble("lat"));
+            youBike.setLng(jsonObject.getDouble("lng"));
+            youBike.setMday(jsonObject.getString("mday"));
+            youBike.setSv(jsonObject.getInt("sv"));
+            youBikes.add(youBike);
+        } catch (JSONException e1) {
+            e1.printStackTrace();
+        }
+
     }
 
 }

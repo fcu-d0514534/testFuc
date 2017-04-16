@@ -7,11 +7,14 @@ import android.widget.Button;
 import android.widget.TextClock;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity implements FunctionListener {
 
 
     private Button bt1,bt2,bt3,bt4,bt5,bt6;
     private TextView tv;
+    private ArrayList<YouBike>  youBike;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,5 +84,11 @@ public class MainActivity extends AppCompatActivity implements FunctionListener 
     @Override
     public void showTextView(String str) {
         tv.setText(str);
+    }
+
+    @Override
+    public void setYoubike(ArrayList<YouBike> youbike) {
+        this.youBike=new ArrayList<>();
+        this.youBike=youbike;
     }
 }

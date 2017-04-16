@@ -39,8 +39,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button4"
+        android:text="google map"
+        android:id="@+id/bt5"
         android:layout_alignTop="@+id/bt4"
         android:layout_alignStart="@+id/bt2" />
 
@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:text="New Button"
         android:id="@+id/button5"
-        android:layout_alignTop="@+id/button4"
+        android:layout_alignTop="@+id/bt5"
         android:layout_alignStart="@+id/bt3" />
 
     <ScrollView
