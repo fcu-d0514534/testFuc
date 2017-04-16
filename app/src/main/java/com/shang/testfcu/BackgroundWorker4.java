@@ -118,7 +118,7 @@ public class BackgroundWorker4 extends AsyncTask<String,Void,String> {
         YouBike youBike=new YouBike();
         try {
             youBike.setSno(jsonObject.getInt("sno"));
-            youBike.setSan(jsonObject.getString("sna"));
+            youBike.setSna(jsonObject.getString("sna"));
             youBike.setSarea(jsonObject.getString("sarea"));
             youBike.setAr(jsonObject.getString("ar"));
             youBike.setTot(jsonObject.getInt("tot"));

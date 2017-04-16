@@ -1,12 +1,14 @@
 package com.shang.testfcu;
 
+import java.io.Serializable;
+
 /**
  * Created by Shang on 2017/4/16.
  */
-public class YouBike {
-
+public class YouBike implements Serializable {
+    private static final long serialVersionUID = -7060210544600464481L;
     private int sno;
-    private String san;
+    private String sna;
     private String sarea;
     private String ar;
     private int tot;
@@ -20,8 +22,8 @@ public class YouBike {
     public void setSno(int sno) {
         this.sno = sno;
     }
-    public void setSan(String san) {
-        this.san = san;
+    public void setSna(String sna) {
+        this.sna = sna;
     }
     public void setSarea(String sarea) {
         this.sarea = sarea;
@@ -54,8 +56,8 @@ public class YouBike {
     public int getSno() {
         return sno;
     }
-    public String getSan() {
-        return san;
+    public String getSna() {
+        return sna;
     }
     public String getSarea() {
         return sarea;

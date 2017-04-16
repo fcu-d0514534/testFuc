@@ -1,5 +1,6 @@
 package com.shang.testfcu;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -49,6 +50,13 @@ public class MainActivity extends AppCompatActivity implements FunctionListener 
                 fetch_AllYoubike();
             }
         });
+
+        bt5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                googlemap(youBike);
+            }
+        });
     }
 
     private void init(){
@@ -56,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements FunctionListener 
         bt2=(Button)findViewById(R.id.bt2);
         bt3=(Button)findViewById(R.id.bt3);
         bt4=(Button)findViewById(R.id.bt4);
+        bt5=(Button)findViewById(R.id.bt5);
         tv=(TextView)findViewById(R.id.tv);
     }
 
@@ -78,6 +87,14 @@ public class MainActivity extends AppCompatActivity implements FunctionListener 
     private void fetch_AllYoubike(){
         BackgroundWorker4 backgroundWorker4=new BackgroundWorker4(this);
         backgroundWorker4.execute();
+    }
+
+    private void googlemap(ArrayList youBike){
+        Intent intent=new Intent(MainActivity.this,MapsActivity.class);
+        Bundle bundle=new Bundle();
+        bundle.putSerializable("youbike",youBike);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
 
