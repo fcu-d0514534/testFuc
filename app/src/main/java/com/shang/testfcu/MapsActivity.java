@@ -5,6 +5,8 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -48,17 +50,32 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney").snippet("TEST"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
-        Marker marker=mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        //marker.showInfoWindow();
+        Marker marker=mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney").snippet("test"));
+        mMap.setInfoWindowAdapter(adapter);
 
-        mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
-            @Override
-            public void onInfoWindowClick(Marker marker) {
-                Toast.makeText(MapsActivity.this,"TEST",Toast.LENGTH_SHORT).show();
-            }
-        });
+
 
     }
+
+    GoogleMap.InfoWindowAdapter adapter=new GoogleMap.InfoWindowAdapter() {
+        @Override
+        public View getInfoWindow(Marker marker) {
+            return null;
+        }
+
+        @Override
+        public View getInfoContents(Marker marker) {
+            View viwe=MapsActivity.this.getLayoutInflater().inflate(R.layout.testlayout,null);
+            TextView tv1=(TextView) viwe.findViewById(R.id.textView);
+            TextView tv2=(TextView) viwe.findViewById(R.id.textView2);
+            ImageView ig=(ImageView)viwe.findViewById(R.id.ig);
+            tv1.setText(marker.getTitle());
+            tv2.setText(marker.getSnippet());
+            ig.setImageResource(R.drawable.appicon);
+
+            return viwe;
+        }
+    };
 
 
 }
