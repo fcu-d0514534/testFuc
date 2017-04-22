@@ -7,16 +7,16 @@ import java.io.Serializable;
  */
 public class YouBike implements Serializable {
     private static final long serialVersionUID = -7060210544600464481L;
-    private int sno;
-    private String sna;
-    private String sarea;
-    private String ar;
-    private int tot;
-    private int sbi;
-    private int bemp;
-    private double lat;
-    private double lng;
-    private String mday;
+    private int sno;               //sno:站點代號
+    private String sna;           //sna:場站名稱
+    private String sarea;         //sarea:場站區域(中文)
+    private String ar;            //ar:地址(中文)
+    private int tot;              //tot:場站總停車格
+    private int sbi;              //sbi:可借車位數
+    private int bemp;           //bemp:可還空位數
+    private double lat;           //lat:緯度
+    private double lng;          //lng:經度
+    private String mday;        //mday:資料更新時間
     private int sv;
 
     public void setSno(int sno) {

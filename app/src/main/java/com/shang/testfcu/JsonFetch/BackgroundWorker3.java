@@ -1,7 +1,9 @@
-package com.shang.testfcu;
+package com.shang.testfcu.JsonFetch;
 
 import android.os.AsyncTask;
 import android.util.Log;
+
+import com.shang.testfcu.FunctionListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;

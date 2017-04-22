@@ -3,11 +3,15 @@ package com.shang.testfcu;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextClock;
 import android.widget.TextView;
+
+import com.shang.testfcu.JsonFetch.BackgroundWorker;
+import com.shang.testfcu.JsonFetch.BackgroundWorker2;
+import com.shang.testfcu.JsonFetch.BackgroundWorker3;
+import com.shang.testfcu.JsonFetch.BackgroundWorker4;
 
 import java.util.ArrayList;
 
@@ -23,7 +27,8 @@ public class MainActivity extends AppCompatActivity implements FunctionListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-;
+
+
 
         init();
         bt1.setOnClickListener(new View.OnClickListener() {
@@ -110,5 +115,11 @@ public class MainActivity extends AppCompatActivity implements FunctionListener 
     public void setYoubike(ArrayList<YouBike> youbike) {
         this.youBike=new ArrayList<>();
         this.youBike=youbike;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 }

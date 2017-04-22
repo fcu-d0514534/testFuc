@@ -1,7 +1,10 @@
-package com.shang.testfcu;
+package com.shang.testfcu.JsonFetch;
 
 import android.os.AsyncTask;
 import android.util.Log;
+
+import com.shang.testfcu.FunctionListener;
+import com.shang.testfcu.YouBike;
 
 import org.json.JSONException;
 import org.json.JSONObject;
