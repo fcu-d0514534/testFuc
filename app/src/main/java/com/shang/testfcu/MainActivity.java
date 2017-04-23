@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.shang.testfcu.JsonFetch.BackgroundWorker;
 import com.shang.testfcu.JsonFetch.BackgroundWorker2;
 import com.shang.testfcu.JsonFetch.BackgroundWorker3;
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements FunctionListener 
 
 
         init();
+        admob();
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,10 +79,18 @@ public class MainActivity extends AppCompatActivity implements FunctionListener 
         tv=(TextView)findViewById(R.id.tv);
     }
 
+    private void admob(){
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
+        mAdView.loadAd(adRequest);
+    }
+
     private void fetch_weather(){
         BackgroundWorker backgroundWorker=new BackgroundWorker(this);
         backgroundWorker.execute();
     }
+
+
 
     private void fetch_PM(){
         BackgroundWorker2 backgroundWorker2=new BackgroundWorker2(this);
