@@ -15,6 +15,7 @@ import com.shang.testfcu.JsonFetch.BackgroundWorker;
 import com.shang.testfcu.JsonFetch.BackgroundWorker2;
 import com.shang.testfcu.JsonFetch.BackgroundWorker3;
 import com.shang.testfcu.JsonFetch.BackgroundWorker4;
+import com.shang.testfcu.JsonFetch.BackgroundWorker5;
 
 import java.util.ArrayList;
 
@@ -69,6 +70,12 @@ public class MainActivity extends AppCompatActivity implements FunctionListener 
                 googlemap(youBike);
             }
         });
+        bt6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                city();
+            }
+        });
     }
 
     private void init(){
@@ -77,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements FunctionListener 
         bt3=(Button)findViewById(R.id.bt3);
         bt4=(Button)findViewById(R.id.bt4);
         bt5=(Button)findViewById(R.id.bt5);
+        bt6=(Button)findViewById(R.id.bt6);
         tv=(TextView)findViewById(R.id.tv);
     }
 
@@ -116,6 +124,11 @@ public class MainActivity extends AppCompatActivity implements FunctionListener 
         bundle.putSerializable("youbike",youBike);
         intent.putExtras(bundle);
         startActivity(intent);
+    }
+
+    private void city(){
+        BackgroundWorker5 backgroundWorker5=new BackgroundWorker5(this);
+        backgroundWorker5.execute();
     }
 
 

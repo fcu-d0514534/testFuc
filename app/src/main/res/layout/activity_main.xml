@@ -50,8 +50,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button5"
+        android:text="解析縣市"
+        android:id="@+id/bt6"
         android:layout_alignTop="@+id/bt5"
         android:layout_alignStart="@+id/bt3" />
 
