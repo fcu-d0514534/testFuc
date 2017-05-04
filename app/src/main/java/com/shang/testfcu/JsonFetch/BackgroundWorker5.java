@@ -30,7 +30,6 @@ import java.util.List;
 public class BackgroundWorker5 extends AsyncTask<String,Void,String> {
     HttpURLConnection connection=null;
     private FunctionListener functionListener;
-    String json=null;
     public BackgroundWorker5(FunctionListener listener){
         functionListener=listener;
     }
@@ -39,7 +38,7 @@ public class BackgroundWorker5 extends AsyncTask<String,Void,String> {
     protected String doInBackground(String... params) {
         //http://huli.logdown.com/posts/206098-study-on-the-google-map-api-which-city-am-i
         try {
-            URL url=new URL("http://maps.google.com/maps/api/geocode/json?latlng=23.920823,120.652914&language=zh-TW&sensor=true");
+            URL url=new URL("http://maps.google.com/maps/api/geocode/json?latlng=24.071206,120.541735&language=zh-TW&sensor=true");
             connection=(HttpURLConnection)url.openConnection();
             connection.setRequestMethod("GET");
             connection.setReadTimeout(3000);
@@ -56,17 +55,9 @@ public class BackgroundWorker5 extends AsyncTask<String,Void,String> {
             input.close();
             connection.disconnect();
 
-            json=sb.toString();
-            JSONObject json1=new JSONObject(json);
-            JSONArray jsonAr1=json1.getJSONArray("results");
-            JSONObject json2=jsonAr1.getJSONObject(0);
-            JSONArray jsonAr2=json2.getJSONArray("address_components");
-            JSONObject json3=jsonAr2.getJSONObject(4);
-            return json3.toString();
+            return sb.toString();
 
         }catch (IOException e) {
-            e.printStackTrace();
-        }catch (JSONException e) {
             e.printStackTrace();
         }
         return null;
@@ -75,9 +66,17 @@ public class BackgroundWorker5 extends AsyncTask<String,Void,String> {
     @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
-
-        functionListener.showTextView(result);
-
+        try{
+            JSONObject json1=new JSONObject(result);
+            JSONArray jsonAr1=json1.getJSONArray("results");
+            JSONObject json2=jsonAr1.getJSONObject(0);
+            JSONArray jsonAr2=json2.getJSONArray("address_components");
+            JSONObject json3=jsonAr2.getJSONObject(4);
+            String json=json3.getString("long_name");
+            functionListener.showTextView(json);
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
     }
 
 }

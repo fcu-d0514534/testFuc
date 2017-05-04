@@ -1,6 +1,8 @@
 package com.shang.testfcu;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,9 +24,12 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements FunctionListener {
 
 
-    private Button bt1,bt2,bt3,bt4,bt5,bt6;
+    private Button bt1,bt2,bt3,bt4,bt5,bt6,bt7;
     private TextView tv;
     private ArrayList<YouBike>  youBike;
+
+    SQLiteDatabase db;
+    DBopneHelper dBopneHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +81,12 @@ public class MainActivity extends AppCompatActivity implements FunctionListener 
                 city();
             }
         });
+        bt7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SQLite();
+            }
+        });
     }
 
     private void init(){
@@ -85,6 +96,7 @@ public class MainActivity extends AppCompatActivity implements FunctionListener 
         bt4=(Button)findViewById(R.id.bt4);
         bt5=(Button)findViewById(R.id.bt5);
         bt6=(Button)findViewById(R.id.bt6);
+        bt7=(Button)findViewById(R.id.bt7);
         tv=(TextView)findViewById(R.id.tv);
     }
 
@@ -129,6 +141,37 @@ public class MainActivity extends AppCompatActivity implements FunctionListener 
     private void city(){
         BackgroundWorker5 backgroundWorker5=new BackgroundWorker5(this);
         backgroundWorker5.execute();
+    }
+
+    private void SQLite(){
+        dBopneHelper=new DBopneHelper(this,youBike);
+        db=dBopneHelper.getWritableDatabase();
+
+        StringBuffer sb=new StringBuffer("");
+        Cursor cursor=db.rawQuery("select * from "+DBopneHelper.DATABASE_TABLE,null);
+        String[] title=cursor.getColumnNames();
+        for(int i=0;i<title.length;i++){
+            sb.append(title[i]+"   ");
+        }
+        sb.append("\n");
+        cursor.moveToFirst();
+        for(int i=0;i<cursor.getCount();i++){
+            sb.append(cursor.getString(cursor.getColumnIndex(title[0]))+" ");
+            sb.append(cursor.getString(cursor.getColumnIndex(title[1]))+" ");
+            sb.append(cursor.getString(cursor.getColumnIndex(title[2]))+" ");
+            sb.append(cursor.getString(cursor.getColumnIndex(title[3]))+" ");
+            sb.append(cursor.getString(cursor.getColumnIndex(title[4]))+" ");
+            sb.append(cursor.getString(cursor.getColumnIndex(title[5]))+" ");
+            sb.append(cursor.getString(cursor.getColumnIndex(title[6]))+" ");
+            sb.append(cursor.getString(cursor.getColumnIndex(title[7]))+" ");
+            sb.append(cursor.getString(cursor.getColumnIndex(title[8]))+" ");
+            sb.append(cursor.getString(cursor.getColumnIndex(title[9]))+" ");
+            sb.append(cursor.getString(cursor.getColumnIndex(title[10]))+" ");
+            sb.append("\n");
+            cursor.moveToNext();
+        }
+        showTextView(sb.toString());
+
     }
 
 

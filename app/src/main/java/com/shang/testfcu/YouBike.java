@@ -18,6 +18,7 @@ public class YouBike implements Serializable {
     private double lng;          //lng:經度
     private String mday;        //mday:資料更新時間
     private int sv;
+    private String city;
 
     public void setSno(int sno) {
         this.sno = sno;
@@ -52,6 +53,9 @@ public class YouBike implements Serializable {
     public void setSv(int sv) {
         this.sv = sv;
     }
+    public void setCity(String city){
+        this.city=city;
+    }
 
     public int getSno() {
         return sno;
@@ -85,6 +89,9 @@ public class YouBike implements Serializable {
     }
     public int getSv() {
         return sv;
+    }
+    public String getCity(){
+        return city;
     }
 
 }

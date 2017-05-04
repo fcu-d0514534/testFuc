@@ -36,15 +36,14 @@
         android:text="全部的YOUBIKE"
         android:id="@+id/bt4"
         android:layout_below="@+id/bt1"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="29dp" />
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="google map"
         android:id="@+id/bt5"
-        android:layout_alignTop="@+id/bt4"
+        android:layout_below="@+id/bt2"
         android:layout_alignStart="@+id/bt2" />
 
     <Button
@@ -55,14 +54,22 @@
         android:layout_alignTop="@+id/bt5"
         android:layout_alignStart="@+id/bt3" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SQLite"
+        android:id="@+id/bt7"
+        android:layout_below="@+id/bt4"
+        android:layout_alignParentStart="true" />
+
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/scrollView"
-        android:layout_below="@+id/bt4"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true" >
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/bt7">
 
         <TextView
             android:layout_width="wrap_content"
@@ -81,7 +88,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        ads:adSize="BANNER"
+        ads:adSize="SMART_BANNER"
         ads:adUnitId="@string/banner_ad_unit_id">
     </com.google.android.gms.ads.AdView>
 
