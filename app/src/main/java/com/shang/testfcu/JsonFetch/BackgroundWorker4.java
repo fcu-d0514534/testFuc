@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.shang.testfcu.FunctionListener;
 import com.shang.testfcu.YouBike;
+import com.shang.testfcu.okHttpFetch;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -15,14 +16,15 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 /**
  * Created by Shang on 2017/4/15.
@@ -34,7 +36,8 @@ public class BackgroundWorker4 extends AsyncTask<String,Void,String> {
     private Element e;
     private FunctionListener functionListener;
     private static final String URL="http://i.youbike.com.tw/cht/f11.php";
-    private ArrayList<YouBike> youBikes;
+    ArrayList<YouBike> youBikes;
+    YouBike youBike;
 
     public BackgroundWorker4(FunctionListener listener){
         functionListener=listener;
@@ -124,7 +127,7 @@ public class BackgroundWorker4 extends AsyncTask<String,Void,String> {
     }
 
     public void setYoubike(JSONObject jsonObject){
-        YouBike youBike=new YouBike();
+        youBike=new YouBike();
         try {
             youBike.setSno(jsonObject.getInt("sno"));
             youBike.setSna(jsonObject.getString("sna"));
@@ -141,7 +144,6 @@ public class BackgroundWorker4 extends AsyncTask<String,Void,String> {
         } catch (JSONException e1) {
             e1.printStackTrace();
         }
-
     }
 
 }

@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+
 import com.shang.testfcu.JsonFetch.BackgroundWorker;
 import com.shang.testfcu.JsonFetch.BackgroundWorker2;
 import com.shang.testfcu.JsonFetch.BackgroundWorker3;
@@ -21,12 +22,13 @@ import com.shang.testfcu.JsonFetch.BackgroundWorker5;
 
 import java.util.ArrayList;
 
+
 public class MainActivity extends AppCompatActivity implements FunctionListener {
 
 
     private Button bt1,bt2,bt3,bt4,bt5,bt6,bt7;
     private TextView tv;
-    private ArrayList<YouBike>  youBike;
+    ArrayList<YouBike>  youBike;
 
     SQLiteDatabase db;
     DBopneHelper dBopneHelper;
@@ -36,9 +38,6 @@ public class MainActivity extends AppCompatActivity implements FunctionListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
-
         init();
         admob();
         bt1.setOnClickListener(new View.OnClickListener() {
@@ -47,28 +46,24 @@ public class MainActivity extends AppCompatActivity implements FunctionListener 
                 fetch_weather();
             }
         });
-
         bt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 fetch_PM();
             }
         });
-
         bt3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 fetch_data();
             }
         });
-
         bt4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 fetch_AllYoubike();
             }
         });
-
         bt5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,8 +107,6 @@ public class MainActivity extends AppCompatActivity implements FunctionListener 
         backgroundWorker.execute();
     }
 
-
-
     private void fetch_PM(){
         BackgroundWorker2 backgroundWorker2=new BackgroundWorker2(this);
         backgroundWorker2.execute();
@@ -139,8 +132,13 @@ public class MainActivity extends AppCompatActivity implements FunctionListener 
     }
 
     private void city(){
-        BackgroundWorker5 backgroundWorker5=new BackgroundWorker5(this);
-        backgroundWorker5.execute();
+        //BackgroundWorker5 backgroundWorker5=new BackgroundWorker5(this);
+        //backgroundWorker5.execute();
+        //okHttpFetch okHttpFetch=new okHttpFetch(youBike,this);
+        //okHttpFetch.inputCity();
+        //okHttpFetch.print();
+
+
     }
 
     private void SQLite(){

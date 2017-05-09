@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.shang.testfcu.FunctionListener;
+import com.shang.testfcu.MainActivity;
 import com.shang.testfcu.YouBike;
 
 import org.json.JSONArray;
@@ -30,15 +31,20 @@ import java.util.List;
 public class BackgroundWorker5 extends AsyncTask<String,Void,String> {
     HttpURLConnection connection=null;
     private FunctionListener functionListener;
-    public BackgroundWorker5(FunctionListener listener){
-        functionListener=listener;
+
+    double lat,lng;
+    public BackgroundWorker5(double lat,double lng){
+        //functionListener=listener;
+        this.lat=lat;
+        this.lng=lng;
     }
 
     @Override
     protected String doInBackground(String... params) {
         //http://huli.logdown.com/posts/206098-study-on-the-google-map-api-which-city-am-i
         try {
-            URL url=new URL("http://maps.google.com/maps/api/geocode/json?latlng=24.071206,120.541735&language=zh-TW&sensor=true");
+            String strurl="http://maps.google.com/maps/api/geocode/json?latlng="+lat+","+lng+"&language=zh-TW&sensor=true";
+            URL url=new URL(strurl);
             connection=(HttpURLConnection)url.openConnection();
             connection.setRequestMethod("GET");
             connection.setReadTimeout(3000);
@@ -73,7 +79,7 @@ public class BackgroundWorker5 extends AsyncTask<String,Void,String> {
             JSONArray jsonAr2=json2.getJSONArray("address_components");
             JSONObject json3=jsonAr2.getJSONObject(4);
             String json=json3.getString("long_name");
-            functionListener.showTextView(json);
+
         }catch (JSONException e){
             e.printStackTrace();
         }
